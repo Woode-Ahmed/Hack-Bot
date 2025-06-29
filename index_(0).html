@@ -1,0 +1,423 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Matkap</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background-color: #121212;
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+    }
+
+    .banner-container {
+      display: flex;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .banner {
+      background-color: #ffff00;
+      text-align: center;
+      padding: 10px;
+      border-bottom: 1px solid #444;
+      font-family: 'Roboto', sans-serif;
+      font-weight: normal;
+      box-sizing: border-box;
+      width: 50%; 
+    }
+
+    .banner .sponsored-by {
+      color: #000;
+      font-weight: normal; 
+    }
+
+    .banner .hudson-rock {
+      color: #000;
+      font-weight: bold;
+      margin-left: 3px;
+      margin-right: 3px;
+    }
+
+    .banner .highlighted-link {
+      color: #027797;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    .banner .highlighted-link:hover {
+      text-decoration: underline; 
+    }
+
+    .arrow-icon {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      margin-left: 4px;
+      vertical-align: middle; 
+    }
+
+    .banner.threatzone {
+      background-color: #121212 !important; 
+      color: #fff !important;
+      width: 50%; 
+    }
+    .banner.threatzone .sponsored-by {
+      color: #fff; 
+      font-weight: normal;
+    }
+    .banner.threatzone .threatzone-logo {
+      color: #00ff00; 
+      font-weight: bold;
+      margin: 0 5px;
+    }
+    .banner.threatzone .highlighted-link {
+      color: #00ff00; 
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    .banner.threatzone .highlighted-link:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+    }
+    .header h1 {
+      flex: 1;
+      margin: 0;
+      text-align: center;
+      color: #00e6e6;
+      text-shadow: 0 0 2px #00e6e6;
+      font-size: 2rem;
+      filter: brightness(0.9); 
+    }
+    .twitter-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #00c8ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .twitter-link:hover {
+      text-decoration: underline;
+    }
+    .twitter-icon {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .form-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .form-row label {
+      width: 80px;
+      color: #a0a0a0;
+      font-weight: 500;
+    }
+    .form-row input {
+      width: 800px;
+      padding: 8px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background-color: #2b2b2b;
+      color: #fff;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center; 
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold; 
+      background: linear-gradient(90deg, #00ffa2, #00c8ff);
+      box-shadow: 0 0 10px rgba(0,255,162,0.7), 0 0 20px rgba(0,200,255,0.5);
+      color: #fff;
+      transition: transform 0.2s ease;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    .btn.stop {
+      background: linear-gradient(90deg, #ff4d4d, #ff0000);
+    }
+    .btn.resume {
+      background: linear-gradient(90deg, #4d79ff, #0040ff);
+    }
+
+    .disclaimer {
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 20px;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #eee;
+      box-shadow: 0 0 9px rgba(0,255,162,0.3);
+    }
+    .disclaimer a {
+      color: #00c8ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .disclaimer a:hover {
+      text-decoration: underline;
+    }
+
+    .analyst-box {
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 20px;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #eee;
+      box-shadow: 0 0 2px rgba(0,255,162,0.3);
+    }
+    .analyst-box a {
+      color: #00c8ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .analyst-box a:hover {
+      text-decoration: underline;
+    }
+
+    .logs-captured {
+      display: flex;
+      gap: 30px;
+      justify-content: space-between;
+    }
+    .logs-captured > div {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .logs-captured h3 {
+      margin: 0;
+      text-align: center; /* Log başlıkları ortalandı */
+    }
+
+    #logArea, #messagesArea {
+      width: 100%;
+      height: 300px;
+      background-color: #2b2b2b;
+      border: 2px solid #00ffa2;
+      box-shadow: 0 0 8px #00ffa2, 0 0 10px #00c8ff;
+      border-radius: 4px;
+      padding: 10px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    #messagesArea {
+      overflow-x: auto;
+    }
+
+    .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 3px 5px;
+      border-radius: 3px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      transition: background 0.2s ease;
+    }
+    .download-link:hover {
+      background-color: #388E3C;
+    }
+    .download-icon {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      transform: rotate(180deg);
+      transform-origin: 50% 50%;
+    }
+
+    .alert-box {
+      display: none; 
+      width: 100%;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      background-color: #ff5555; 
+      color: #fff;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 20px; 
+      border-radius: 0 0 6px 6px; 
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner-container">
+
+    <div class="banner threatzone">
+      <span class="sponsored-by">Sponsored by</span>
+      <span class="threatzone-logo"></span>
+      
+      <img src="images/logo.png" alt="ThreatZone Logo" style="height:30px; vertical-align:middle;">
+      <p style="margin: 0;">
+        <a href="https://t.me/NO_BRAK" class="highlighted-link" target="_blank">
+          Threat Zone is a malware analysis platform that shows you real activities of files.
+          <svg class="arrow-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="9 6 15 12 9 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></polyline>
+            <line x1="15" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></line>
+          </svg>
+        </a>
+      </p>
+    </div>
+
+    <div class="banner">
+      <span class="sponsored-by">Sponsored by</span>
+      <span class="Ahmed-Woode">Hudson Rock</span> -
+      <a href="https://www.facebook.com/a.woode.249" class="highlighted-link" target="_blank">
+        Everything you need in the hacking world — tools, courses, and advanced techniques.
+        <svg class="arrow-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="9 6 15 12 9 18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <line x1="15" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></line>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div id="alertBox" class="alert-box"></div>
+
+  <div class="container">
+    <div class="header">
+      <h1>NO BRAK HACK - Telegram bots
+        
+      </h1>
+      <a class="twitter-link" href="https://t.me/c249c" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
+          <path d="M39,44H9c-1.657,0-3-1.343-3-3v-7h36v7C42,42.657,40.657,44,39,44z"></path>
+          <path fill="#fff" d="M39,41H9c-1.105,0-2-0.895-2-2V7h34v32C41,40.105,40.105,41,39,41z"></path>
+          <path d="M39,42H9c-1.654,0-3-1.346-3-3V7c0-0.552,0.447-1,1-1h34c0.553,0,1,0.448,1,1v32C42,40.654,40.654,42,39,42z M8,8v31
+	            c0,0.551,0.448,1,1,1h30c0.552,0,1-0.449,1-1V8H8z"></path>
+          <path d="M34.257,34h-6.437L13.829,14h6.437L34.257,34z M28.587,32.304h2.563L19.499,15.696h-2.563L28.587,32.304z"></path>
+          <polygon points="15.866,34 23.069,25.656 22.127,24.407 13.823,34"></polygon>
+          <polygon points="24.45,21.721 25.355,23.01 33.136,14 31.136,14"></polygon>
+        </svg>
+        developed by @c249c
+      </a>
+    </div>
+
+    <div class="form-row">
+      <label for="botToken">Bot Token:</label>
+      <input id="botToken" type="text" placeholder="bot1234:xxxx">
+    </div>
+    <div class="form-row">
+      <label for="malChatId">Chat ID:</label>
+      <input id="malChatId" type="text" placeholder="123456789">
+    </div>
+
+    <div class="button-group">
+      <button id="startAttackBtn" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>Start Attack
+      </button>
+      <button id="forwardAllBtn" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M4 4h4l8 8-8 8H4V4zm6 8l8-8v16l-8-8z"></path></svg>Forward All
+      </button>
+      <button id="stopBtn" class="btn stop">
+        <svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"></path></svg>Stop
+      </button>
+      <button id="resumeBtn" class="btn resume">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>Resume
+      </button>
+      <button id="exportMessagesBtn" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18L5 9h4v6h4V9h4L12 2z"></path></svg>Export Messages
+      </button>
+      <button id="clearMessagesBtn" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm2 3h14l-1 12H6L5 9zm5-7h4v2h-4V2z"></path></svg>Clear Messages
+      </button>
+      <button id="clearLogsBtn" class="btn">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm2 3h14l-1 12H6L5 9zm5-7h4v2h-4V2z"></path></svg>Clear Logs
+      </button>
+    </div>
+
+    <div class="logs-captured">
+      <div>
+        <h3>Logs</h3>
+        <div id="logArea"></div>
+      </div>
+      <div>
+        <h3>Captured Messages</h3>
+        <div id="messagesArea"></div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <p>
+        <strong>📌 Disclaimer:</strong> Matkap is intended for educational and research purposes only.
+        This tool is designed to help cybersecurity professionals analyze and understand Telegram bot interactions,
+        particularly those that may pose security risks.
+        <br><br>
+        🔹 By using Matkap, you agree to the following terms:
+        <br>
+        Do not use this tool for illegal purposes.
+        <br>
+        You are fully responsible for your actions.
+        <br>
+        Follow Telegram's API Terms and local laws.
+        <br>
+        The developers are not liable for any misuse or damages.
+        <br>
+      </p>
+    </div>
+
+    <div class="analyst-box">
+      <p>
+        check out this awesome tool I recommend — All-in-One malware analysis tool for analyzing many file types, 
+        from Windows binaries to E-Mail files. with this tool, you can scrape Telegram bot tokens and chat IDs from malware!
+        You can get:
+        <a href="https://github.com/Woode-Ahmed" target="_blank" rel="noopener">
+          Hack boot on GitHub
+        </a>.
+      </p>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+
+
+
+
+</body></html>
